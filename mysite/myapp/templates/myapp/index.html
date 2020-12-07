@@ -1,0 +1,48 @@
+{% extends 'myapp/base.html' %}
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-6">
+            <h3>Add your task here</h3><br>
+    <form class="shadow-lg p-3 mb-5 bg-white border border-primary" style="border-width:3px !important" method="POST">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="name">What do you want to accomplish?</label>
+        <input type="text" class="form-control" name="name" id="name", placeholder="Enter Task Name"><br>
+        <label for="priority">How important is it to you?(1-10)</label>
+        <input type="text" name="priority" id="priority", placeholder="5"><br><br>
+        <label for="date">When are you planning?</label>
+        <input type="datetime-local" name="date" id="date">
+    </div>
+    <input type="submit" class="btn btn-primary">
+    </form>
+            <a type="button" class="btn btn-danger" href="{% url 'deleteall' %}">DELETE ALL</a><br>
+        </div>
+
+
+
+    <div class="col-md-6">
+        <h3>Your Tasks</h3><br>
+
+        {% for task in task_list %}
+
+        <div class="card shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h5 class="card-title" style="color:#3153cc">
+                    {{task.name}}<br>
+                </h5>
+                <p class="card-text" style="color:#d1283e"><b>
+                    {{task.priority}}<br></b></p>
+                <p> {{task.date}}</p>
+                <a type="button" class="btn btn-success" href="{% url 'delete' task.id %}">SUCCESS</a>
+                <a type="button" class="btn btn-warning" href="{% url 'update' task.id %}">EDIT</a>
+            </div>
+
+        </div><br>
+        {% endfor %}
+    </div>
+
+        </div></div>
+{% endblock %}

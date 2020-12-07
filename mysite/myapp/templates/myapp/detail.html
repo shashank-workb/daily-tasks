@@ -1,0 +1,17 @@
+{% extends 'myapp/base.html' %}
+{% block body %}
+   <div class="card shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h5 class="card-title" style="color:#3153cc">
+                    {{task.name}}<br>
+                </h5>
+                <p class="card-text" style="color:#d1283e"><b>
+                    {{task.priority}}<br></b></p>
+                <p> {{task.date}}</p>
+                <a type="button" class="btn btn-success" href="{% url 'delete' task.id %}">SUCCESS</a>
+                <a type="button" class="btn btn-warning" href="{% url 'update' task.id %}">EDIT</a>
+            </div>
+
+   </div>
+
+{% endblock %}

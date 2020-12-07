@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<div class="container-fluid ">
+        <div class="row topbanner">
+            <div class="col-md-12">
+                <div class="banner" >
+                    <div class="bannertext">
+                        <h1>⚀⚁⚂ DAILY TASKS ⚃⚄⚅</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'myapp/index_style.css' %}">
+    <meta charset="UTF-8">
+</head>
+<body>
+    {% block body %}
+    {% endblock %}
+</body>
+</html>
