@@ -4,6 +4,7 @@ from .forms import TodoForm
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
+from datetime import datetime
 # Create your views here.
 
 '''
@@ -17,13 +18,20 @@ def add(request):
 
     return render(request, template_name='myapp/add.html')
 '''
+
+
 def index(request):
     task_list = task.objects.all()
     if request.method == 'POST':
+        import ipdb
+        #ipdb.set_trace()
         name = request.POST.get('name', 'default name')
-        pr = request.POST.get('priority', 'default priority')
+        pr = request.POST.get('priority')
+        if not pr: pr = 5
         date = request.POST.get('date')
-        t = task(name=name, priority=pr)
+        if not date: date = datetime.now()
+        t = task(name=name, priority=pr, date=date)
+        #t = task(name=name)
         t.save()
         return redirect('/')
     return render(request, template_name = 'myapp/index.html', context={'task_list':task_list})
