@@ -16,7 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp import views
+
+#REST-API
+from django.conf.urls import include
+from rest_framework import routers # help in form urls for api
+from myapp.views import taskviewset
+
+router = routers.DefaultRouter()
+router.register(r'taskbydate', taskviewset)
+
 urlpatterns = [
+    path('rest/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('delete/<int:task_id>/', views.delete, name='delete'),

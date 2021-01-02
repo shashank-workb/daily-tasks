@@ -7,6 +7,11 @@ from django.urls import reverse_lazy
 from datetime import datetime
 # Create your views here.
 
+#REST-API
+from rest_framework import viewsets, filters
+from .serializers import taskserializers
+from django_filters.rest_framework import DjangoFilterBackend
+
 '''
 def add(request):
     if request.method == 'POST':
@@ -23,7 +28,7 @@ def add(request):
 def index(request):
     task_list = task.objects.all()
     if request.method == 'POST':
-        import ipdb
+        #import ipdb
         #ipdb.set_trace()
         name = request.POST.get('name', 'default name')
         pr = request.POST.get('priority')
@@ -84,3 +89,14 @@ class Taskdeleteview(DeleteView):
     template_name = 'myapp/classdelete.html'
     success_url = reverse_lazy('cbvlist')
     #https: // stackoverflow.com / questions / 17475324 / django - deleteview - without - confirmation - template
+
+#REST-API
+class taskviewset(viewsets.ModelViewSet):
+
+    queryset = task.objects.all().order_by('date')
+    serializer_class = taskserializers
+
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ['priority']
+    search_fields = ['name']
+    ordering_fields = ['priority']
