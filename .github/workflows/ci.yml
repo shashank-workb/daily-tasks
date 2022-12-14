@@ -6,26 +6,6 @@ on:
     branches: [ master ]
 
 jobs:
-  Quality:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-    - name: Install Python Poetry
-      uses: abatilo/actions-poetry@v2.1.0
-      with:
-        poetry-version: 1.1.5
-    - name: Configure poetry
-      shell: bash
-      run: python -m poetry config virtualenvs.in-project true
-    - name: View poetry version
-      run: poetry --version
-    - name: Install dependencies
-      run: |
-        python -m poetry install
-    
   Release:
     needs: Quality
     # https://github.community/t/how-do-i-specify-job-dependency-running-in-another-workflow/16482
