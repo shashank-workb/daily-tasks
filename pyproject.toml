@@ -1,6 +1,7 @@
 [tool.poetry]
 name = "your-project"
 version = "0.0.1"
+description = "daily task tracker"
 [tool.semantic_release]
 version_variable = [
     "src_folder/__init__.py:__version__",
