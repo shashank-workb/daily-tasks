@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "your-project"
-version = "0.1.0"
+version = "0.0.0"
 description = "daily task tracker"
 authors = [
     "Shashank Mishra <shashank.mishra@betterworks.com>",
