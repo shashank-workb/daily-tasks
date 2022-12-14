@@ -2,6 +2,9 @@
 name = "your-project"
 version = "0.0.1"
 description = "daily task tracker"
+authors = [
+    "Shashank Mishra <shashank.mishra@betterworks.com>",
+]
 [tool.semantic_release]
 version_variable = [
     "src_folder/__init__.py:__version__",
